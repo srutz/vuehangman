@@ -8,13 +8,13 @@ export type Settings = {
 }
 
 const STORAGE_KEY = 'hangman.settings'
-const DEFAULTS: Settings = { umlautMode: 'umlauts' }
+const DEFAULTS: Settings = { umlautMode: 'digraphs' }
 
 function load(): Settings {
   try {
     const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '{}')
     return {
-      umlautMode: parsed.umlautMode === 'digraphs' ? 'digraphs' : DEFAULTS.umlautMode,
+      umlautMode: parsed.umlautMode === 'umlauts' ? 'umlauts' : DEFAULTS.umlautMode,
     }
   } catch {
     return { ...DEFAULTS }
