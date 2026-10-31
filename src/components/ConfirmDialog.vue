@@ -8,7 +8,7 @@
       <p id="confirm-dialog-message">{{ message }}</p>
       <div class="grow"></div>
       <div class="mr-4 flex justify-end space-x-2">
-        <my-button @click="resolveConfirmDialog(false)">Abbrechen</my-button>
+        <my-button variant="secondary" @click="resolveConfirmDialog(false)">Abbrechen</my-button>
         <my-button @click="resolveConfirmDialog(true)">Bestätigen</my-button>
       </div>
     </div>

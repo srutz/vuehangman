@@ -5,7 +5,7 @@ body {
 }
 
 #app {
-  @apply grow flex flex-col h-1 bg-stone-800 overflow-y-auto overflow-x-hidden;
+  @apply grow flex flex-col h-1 bg-zinc-600 overflow-y-auto overflow-x-hidden;
 }
 
 /* View Transitions: enter/leave animations (see src/viewTransition.ts) */
