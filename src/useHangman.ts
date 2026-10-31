@@ -10,14 +10,16 @@ export type GameState = {
 
 
 
+// Module-level state so the game survives navigating to other routes (e.g. settings).
+const game = ref<GameState>({
+  state: "stopped",
+  attempts: 0,
+  misses: 0,
+  word: "",
+  guessed: []
+})
+
 export function useHangman() {
-  const game = ref<GameState>({
-    state: "stopped",
-    attempts: 0,
-    misses: 0,
-    word: "",
-    guessed: []
-  })
 
   function startGame(word: string) {
     game.value.state = "playing"

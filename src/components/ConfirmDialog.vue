@@ -4,12 +4,12 @@
     class="fixed inset-0 flex items-center justify-center bg-black/50 outline-none [view-transition-name:vt-confirmdialog]"
     @click.self="resolveConfirmDialog(false)" @keydown.esc.stop.prevent="resolveConfirmDialog(false)">
     <div class="bg-white p-6 rounded shadow-lg max-w-sm flex flex-col grow min-h-[200px] gap-4">
-      <div class="text-xl font-bold">Confirm</div>
+      <div class="text-xl font-bold">Bestätigen</div>
       <p id="confirm-dialog-message">{{ message }}</p>
       <div class="grow"></div>
       <div class="mr-4 flex justify-end space-x-2">
-        <my-button @click="resolveConfirmDialog(false)">Cancel</my-button>
-        <my-button @click="resolveConfirmDialog(true)">Confirm</my-button>
+        <my-button @click="resolveConfirmDialog(false)">Abbrechen</my-button>
+        <my-button @click="resolveConfirmDialog(true)">Bestätigen</my-button>
       </div>
     </div>
   </div>

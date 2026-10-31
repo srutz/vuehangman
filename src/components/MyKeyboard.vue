@@ -1,7 +1,7 @@
 <template>
   <div ref="root" tabindex="-1"
     class="w-[min(100%,40rem)] outline-none select-none rounded-2xl bg-zinc-300 border border-zinc-700 p-[clamp(0.5rem,2vw,1rem)] shadow-[0_8px_0_#020617,0_14px_24px_#0f172a30]"
-    role="group" aria-label="Letter keyboard">
+    role="group" aria-label="Buchstabentastatur">
     <div v-for="row in rows" :key="row"
       class="keyboard-row grid grid-cols-22 gap-[clamp(0.2rem,1vw,0.5rem)] not-first:mt-[0.65rem]"
       :class="rowOffset(row)">
@@ -21,6 +21,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { useSettings } from '@/composables/useSettings.ts'
 
 const { inactiveKeys = [], qwertz = true } = defineProps<{
   inactiveKeys?: string[]
@@ -33,9 +34,16 @@ const emit = defineEmits<{
   'key-press': [letter: string]
 }>()
 
-const rows = computed(() =>
-  qwertz ? ['QWERTZUIOPÜ', 'ASDFGHJKLÖÄ', 'YXCVBNM'] : ['QWERTYUIOPÜ', 'ASDFGHJKLÖÄ', 'ZXCVBNM'],
-)
+const { settings } = useSettings()
+const useUmlauts = computed(() => settings.value.umlautMode === 'umlauts')
+
+// Ü/Ö/Ä keys only exist when umlauts are enabled in the settings.
+const rows = computed(() => {
+  const [ue, oe, ae] = useUmlauts.value ? ['Ü', 'Ö', 'Ä'] : ['', '', '']
+  return qwertz
+    ? [`QWERTZUIOP${ue}`, `ASDFGHJKL${oe}${ae}`, 'YXCVBNM']
+    : [`QWERTYUIOP${ue}`, `ASDFGHJKL${oe}${ae}`, 'ZXCVBNM']
+})
 // Centre each row in the 22-column grid (every key spans 2 columns).
 const rowOffsets: Record<number, string> = {
   7: '[&>:first-child]:col-start-5',
@@ -57,7 +65,7 @@ function handleKeydown(event: KeyboardEvent) {
     event.ctrlKey ||
     event.altKey ||
     event.metaKey ||
-    !/^[a-zäöü]$/i.test(event.key)
+    !(useUmlauts.value ? /^[a-zäöü]$/i : /^[a-z]$/i).test(event.key)
   ) {
     return
   }
