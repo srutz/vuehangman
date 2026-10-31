@@ -1,6 +1,6 @@
 <template>
   <div ref="root" tabindex="-1"
-    class="w-[min(100%,40rem)] outline-none select-none rounded-2xl bg-zinc-300 border border-zinc-700 p-[clamp(0.5rem,2vw,1rem)] shadow-[0_8px_0_#020617,0_14px_24px_#0f172a30]"
+    class="w-full sm:w-[min(100%,40rem)] outline-none select-none rounded-2xl bg-zinc-300 border border-zinc-700 p-0 pt-[6px] pb-[6px] sm:p-[clamp(0.5rem,2vw,1rem)] shadow-[0_8px_0_#020617,0_14px_24px_#0f172a30]"
     role="group" aria-label="Buchstabentastatur">
     <div v-for="row in rows" :key="row"
       class="keyboard-row grid grid-cols-22 gap-[clamp(0.2rem,1vw,0.5rem)] not-first:mt-[0.65rem]"

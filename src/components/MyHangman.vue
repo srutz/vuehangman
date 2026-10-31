@@ -1,6 +1,6 @@
 <template>
   <div ref="host"
-    class="relative w-full max-w-md aspect-[5/5.4] overflow-hidden rounded-2xl border border-zinc-600 shadow-2xl shadow-black/60"
+    class="relative w-[70%] sm:w-full max-w-md aspect-[5/5.4] overflow-hidden rounded-2xl border border-zinc-600 shadow-2xl shadow-black/60"
     role="img" :aria-label="`Galgenmännchen: ${wrongGuesses} von ${MAX_MISSES} Fehlversuchen`"></div>
 </template>
 

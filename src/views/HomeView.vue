@@ -46,7 +46,7 @@
           {{ game.guessed.includes(letter) ? letter : '_' }}
         </span>
       </div>
-      <div class="bottom-4 [view-transition-name:vt-keyboard]">
+      <div class="bottom-4 w-full flex justify-center [view-transition-name:vt-keyboard]">
         <MyKeyboard class="my-8" @key-press="handleKey" :inactiveKeys="game.guessed" />
       </div>
       <div class="mt-4 [view-transition-name:vt-stop]">
