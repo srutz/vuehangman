@@ -1,21 +1,10 @@
 # vuehangman
 
-This template should help get you started developing with Vue 3 in Vite.
+Hangman in Vue3, by Stepan Rutz.
 
-## Letter keyboard
+## Live Demo
 
-`src/components/MyKeyboard.vue` provides a responsive, staggered QWERTY letter
-keyboard with raised keys and visible focus/pressed states.
-
-```vue
-<MyKeyboard @key-press="handleLetter" />
-```
-
-`key-press` emits one uppercase letter (`A`-`Z`) for each click or physical
-letter key press. Shift/Caps Lock work; held-key repeats, modifier shortcuts,
-IME composition, and typing in editable fields are ignored. Enter/Space still
-activate focused buttons normally. Physical keyboard listeners are active only
-while the component is mounted, so mount it only when letter input is wanted.
+[Try it online](https://srutz.github.io/vuehangman)
 
 ## Recommended IDE Setup
 
