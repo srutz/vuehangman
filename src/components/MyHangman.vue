@@ -39,7 +39,7 @@ function createScene(container: HTMLElement) {
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false })
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
   renderer.shadowMap.enabled = true
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap
+  renderer.shadowMap.type = THREE.PCFShadowMap
   renderer.toneMapping = THREE.ACESFilmicToneMapping
   renderer.toneMappingExposure = 1.1
   renderer.domElement.style.cssText = 'display:block;width:100%;height:100%'
@@ -347,7 +347,7 @@ function createScene(container: HTMLElement) {
   resize()
 
   // ---------------------------------------------------------------- loop
-  const clock = new THREE.Clock()
+  const clock = new THREE.Timer()
   let swingAngle = 0
   let swingVel = 0
   let raf = 0
@@ -358,8 +358,9 @@ function createScene(container: HTMLElement) {
 
   const tick = () => {
     raf = requestAnimationFrame(tick)
+    clock.update()
     const dt = Math.min(clock.getDelta(), 0.05)
-    const t = clock.elapsedTime
+    const t = clock.getElapsed()
     const now = performance.now()
 
     // reveal animations
