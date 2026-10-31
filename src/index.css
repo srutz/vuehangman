@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+body {
+  @apply w-screen h-screen flex flex-col
+}
+
+#app {
+  @apply grow flex flex-col h-1 bg-stone-800;
+}
+
+/* View Transitions: enter/leave animations (see src/viewTransition.ts) */
+::view-transition-group(*) {
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes vt-fade-slide-in {
+  from {
+    opacity: 0;
+    transform: tranzincY(1.5rem);
+  }
+}
+
+@keyframes vt-fade-slide-out {
+  to {
+    opacity: 0;
+    transform: tranzincY(1.5rem);
+  }
+}
+
+::view-transition-new(vt-keyboard),
+::view-transition-new(vt-word),
+::view-transition-new(vt-hangman),
+::view-transition-new(vt-stop),
+::view-transition-new(vt-start) {
+  animation: vt-fade-slide-in 300ms ease-out both;
+}
+
+::view-transition-old(vt-keyboard),
+::view-transition-old(vt-word),
+::view-transition-old(vt-hangman),
+::view-transition-old(vt-stop),
+::view-transition-old(vt-start) {
+  animation: vt-fade-slide-out 250ms ease-in both;
+}
